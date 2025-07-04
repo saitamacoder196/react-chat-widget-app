@@ -1,0 +1,203 @@
+.image-cropper {
+  animation: slideUp 0.3s ease-out;
+}
+
+@keyframes slideUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.preview-header {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.preview-header h3 {
+  color: #333;
+  margin-bottom: 10px;
+  font-size: 1.5rem;
+}
+
+.preview-header p {
+  color: #666;
+  font-size: 1rem;
+}
+
+.crop-container {
+  display: flex;
+  gap: 30px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.crop-area {
+  flex: 1;
+  min-width: 300px;
+}
+
+.crop-canvas-container {
+  position: relative;
+  width: 300px;
+  height: 300px;
+  margin: 0 auto;
+  border: 2px solid #ddd;
+  border-radius: 15px;
+  overflow: hidden;
+  background: #f8f9fa;
+}
+
+.crop-canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transition: transform 0.1s ease;
+  user-select: none;
+  -webkit-user-drag: none;
+}
+
+.crop-overlay {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 200px;
+  height: 200px;
+  border: 3px solid #667eea;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  pointer-events: none;
+  box-shadow: 0 0 0 1000px rgba(0,0,0,0.5);
+}
+
+.crop-controls {
+  flex: 1;
+  min-width: 250px;
+}
+
+.control-group {
+  margin-bottom: 20px;
+}
+
+.control-group label {
+  display: block;
+  margin-bottom: 8px;
+  font-weight: 600;
+  color: #333;
+}
+
+.slider {
+  width: 100%;
+  height: 6px;
+  border-radius: 3px;
+  background: #ddd;
+  outline: none;
+  -webkit-appearance: none;
+  appearance: none;
+}
+
+.slider::-webkit-slider-thumb {
+  appearance: none;
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  cursor: pointer;
+  box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+.slider::-moz-range-thumb {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  cursor: pointer;
+  border: none;
+  box-shadow: 0 2px 10px rgba(102, 126, 234, 0.3);
+}
+
+.preview-result {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.preview-circle {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  border: 3px solid #667eea;
+  overflow: hidden;
+  background: #f8f9fa;
+  box-shadow: 0 10px 30px rgba(102, 126, 234, 0.2);
+}
+
+.preview-circle canvas {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.action-buttons {
+  display: flex;
+  gap: 15px;
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.btn {
+  padding: 12px 25px;
+  border: none;
+  border-radius: 25px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  text-decoration: none;
+  display: inline-block;
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, #667eea, #764ba2);
+  color: white;
+}
+
+.btn-secondary {
+  background: #f8f9fa;
+  color: #333;
+  border: 2px solid #ddd;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+}
+
+.btn-secondary:hover {
+  background: #e9ecef;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+@media (max-width: 768px) {
+  .crop-container {
+    flex-direction: column;
+    align-items: center;
+  }
+  
+  .crop-area {
+    min-width: 250px;
+  }
+  
+  .crop-canvas-container {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .crop-overlay {
+    width: 150px;
+    height: 150px;
+  }
+}

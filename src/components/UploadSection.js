@@ -1,9 +1,8 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useEffect } from 'react';
 import './UploadSection.css';
 
-function UploadSection({ onLogoUpload }) {
+function UploadSection({ onLogoUpload, isUploaded }) {
   const [isDragging, setIsDragging] = useState(false);
-  const [isUploaded, setIsUploaded] = useState(false);
   const fileInputRef = useRef(null);
 
   const handleDragOver = (e) => {
@@ -35,9 +34,15 @@ function UploadSection({ onLogoUpload }) {
     const reader = new FileReader();
     reader.onload = (e) => {
       onLogoUpload(e.target.result);
-      setIsUploaded(true);
     };
     reader.readAsDataURL(file);
+  };
+
+  const resetUpload = () => {
+    if (fileInputRef.current) {
+      fileInputRef.current.value = '';
+    }
+    onLogoUpload(null);
   };
 
   return (
@@ -60,10 +65,16 @@ function UploadSection({ onLogoUpload }) {
         ) : (
           <>
             <div className="upload-icon">✅</div>
-            <div className="upload-text">Logo đã được upload thành công!</div>
+            <div className="upload-text">Logo đã được tạo thành công!</div>
             <div className="upload-hint">
               Kiểm tra chat widget ở góc phải dưới màn hình
             </div>
+            <button className="upload-btn" onClick={(e) => {
+              e.stopPropagation();
+              resetUpload();
+            }}>
+              Upload ảnh khác
+            </button>
           </>
         )}
         <input 
